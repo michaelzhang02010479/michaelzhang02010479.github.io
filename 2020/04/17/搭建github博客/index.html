@@ -7,17 +7,20 @@
   
   <title>搭建github博客 | Michael-叶落</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一直想把所有博客迁移到github上，今天正式开始，不定时更新 安装nodejswindows上安装nodejs 安装Hexo123456npm i hexo-cli -g # 安装Hexohexo -v #验证是否成功hexo init #切换到对应的目录，然后初始化文件夹npm install #安装必要组件hexo g #生产静态网页hexo s #打开本地服务器，然后浏览器打开localh">
+  <meta name="description" content="安装nodejs 安装Hexo 连接github到本地 修改hexo的配置文件 写文章、发布文章 修改标题 博客域名配置      一直想把所有博客迁移到github上，今天正式开始，不定时更新 安装nodejs#windows上安装nodejs 安装Hexo#123456npm i hexo-cli -g # 安装Hexohexo -v #验证是否成功hexo init #切换到对应的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建github博客">
 <meta property="og:url" content="https://michaelzhang02010479.github.io/2020/04/17/%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Michael-叶落">
-<meta property="og:description" content="一直想把所有博客迁移到github上，今天正式开始，不定时更新 安装nodejswindows上安装nodejs 安装Hexo123456npm i hexo-cli -g # 安装Hexohexo -v #验证是否成功hexo init #切换到对应的目录，然后初始化文件夹npm install #安装必要组件hexo g #生产静态网页hexo s #打开本地服务器，然后浏览器打开localh">
+<meta property="og:description" content="安装nodejs 安装Hexo 连接github到本地 修改hexo的配置文件 写文章、发布文章 修改标题 博客域名配置      一直想把所有博客迁移到github上，今天正式开始，不定时更新 安装nodejs#windows上安装nodejs 安装Hexo#123456npm i hexo-cli -g # 安装Hexohexo -v #验证是否成功hexo init #切换到对应的">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020043.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020348.png">
 <meta property="article:published_time" content="2020-04-16T17:11:55.000Z">
-<meta property="article:modified_time" content="2020-04-19T15:27:21.736Z">
+<meta property="article:modified_time" content="2020-04-19T18:05:07.269Z">
 <meta property="article:author" content="Michaelz">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020043.png">
   
     <link rel="alternate" href="/atom.xml" title="Michael-叶落" type="application/atom+xml">
   
@@ -92,17 +95,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一直想把所有博客迁移到github上，今天正式开始，不定时更新</p>
-<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>windows上安装nodejs</p>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-cli -g <span class="comment"># 安装Hexo</span></span><br><span class="line">hexo -v <span class="comment">#验证是否成功</span></span><br><span class="line">hexo init <span class="comment">#切换到对应的目录，然后初始化文件夹</span></span><br><span class="line">npm install <span class="comment">#安装必要组件</span></span><br><span class="line">hexo g <span class="comment">#生产静态网页</span></span><br><span class="line">hexo s <span class="comment">#打开本地服务器，然后浏览器打开localhost:4000预览博客</span></span><br></pre></td></tr></table></figure>
+        <div class="toc">
 
-<h2 id="连接github到本地"><a href="#连接github到本地" class="headerlink" title="连接github到本地"></a>连接github到本地</h2><p>首先登录自己的github，创建GitHub Pages</p>
+<!-- toc -->
+
+<ul>
+<li><a href="#an-zhuang-nodejs">安装nodejs</a></li>
+<li><a href="#an-zhuang-hexo">安装Hexo</a></li>
+<li><a href="#lian-jie-github-dao-ben-di">连接github到本地</a></li>
+<li><a href="#xiu-gai-hexo-de-pei-zhi-wen-jian">修改hexo的配置文件</a></li>
+<li><a href="#xie-wen-zhang-fa-bu-wen-zhang">写文章、发布文章</a></li>
+<li><a href="#xiu-gai-biao-ti">修改标题</a></li>
+<li><a href="#bo-ke-yu-ming-pei-zhi">博客域名配置</a></li>
+</ul>
+<!-- tocstop -->
+
+</div>
+
+<p>一直想把所有博客迁移到github上，今天正式开始，不定时更新</p>
+<h2><span id="an-zhuang-nodejs">安装nodejs</span><a href="#an-zhuang-nodejs" class="header-anchor">#</a></h2><p>windows上安装nodejs</p>
+<h2><span id="an-zhuang-hexo">安装Hexo</span><a href="#an-zhuang-hexo" class="header-anchor">#</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-cli -g <span class="comment"># 安装Hexo</span></span><br><span class="line">hexo -v <span class="comment">#验证是否成功</span></span><br><span class="line">hexo init <span class="comment">#切换到对应的目录，然后初始化文件夹</span></span><br><span class="line">npm install <span class="comment">#安装必要组件</span></span><br><span class="line">hexo g <span class="comment">#生产静态网页</span></span><br><span class="line">hexo s <span class="comment">#打开本地服务器，然后浏览器打开localhost:4000预览博客</span></span><br></pre></td></tr></table></figure>
+
+<h2><span id="lian-jie-github-dao-ben-di">连接github到本地</span><a href="#lian-jie-github-dao-ben-di" class="header-anchor">#</a></h2><p>首先登录自己的github，创建GitHub Pages</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"xxx"</span> <span class="comment">#配置github账户</span></span><br><span class="line">git config --global user.email <span class="string">"xxx"</span></span><br><span class="line"><span class="comment">#复制公钥到github</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="修改hexo的配置文件"><a href="#修改hexo的配置文件" class="headerlink" title="修改hexo的配置文件"></a>修改hexo的配置文件</h2><p>修改hexo目录下的配置文件：_config.yml</p>
+<h2><span id="xiu-gai-hexo-de-pei-zhi-wen-jian">修改hexo的配置文件</span><a href="#xiu-gai-hexo-de-pei-zhi-wen-jian" class="header-anchor">#</a></h2><p>修改hexo目录下的配置文件：_config.yml</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/xxx/xxx.github.io</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="写文章、发布文章"><a href="#写文章、发布文章" class="headerlink" title="写文章、发布文章"></a>写文章、发布文章</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git <span class="comment">#安装扩展</span></span><br><span class="line">hexo new post <span class="string">"name of you title"</span> <span class="comment">#新建文章并编辑，文件位于\source\_posts</span></span><br><span class="line">hexo g <span class="comment">#生产静态网页</span></span><br><span class="line">hexo s <span class="comment">#打开本地服务器并预览静态网页</span></span><br><span class="line">hexo d <span class="comment">#上传到github</span></span><br></pre></td></tr></table></figure>
+<h2><span id="xie-wen-zhang-fa-bu-wen-zhang">写文章、发布文章</span><a href="#xie-wen-zhang-fa-bu-wen-zhang" class="header-anchor">#</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git <span class="comment">#安装扩展</span></span><br><span class="line">hexo new post <span class="string">"name of you title"</span> <span class="comment">#新建文章并编辑，文件位于\source\_posts</span></span><br><span class="line">hexo g <span class="comment">#生产静态网页</span></span><br><span class="line">hexo s <span class="comment">#打开本地服务器并预览静态网页</span></span><br><span class="line">hexo d <span class="comment">#上传到github</span></span><br></pre></td></tr></table></figure>
+
+<h2><span id="xiu-gai-biao-ti">修改标题</span><a href="#xiu-gai-biao-ti" class="header-anchor">#</a></h2><p>_config.yml是hexo的全局配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Hexo Configuration</span><br><span class="line">## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;configuration.html</span><br><span class="line">## Source: https:&#x2F;&#x2F;github.com&#x2F;hexojs&#x2F;hexo&#x2F;</span><br><span class="line"></span><br><span class="line"># Site</span><br><span class="line">title: 博客的标题</span><br><span class="line">subtitle: 博客的字标题</span><br><span class="line">description: 文字描述</span><br><span class="line">author: </span><br><span class="line">language: </span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
+
+<h2><span id="bo-ke-yu-ming-pei-zhi">博客域名配置</span><a href="#bo-ke-yu-ming-pei-zhi" class="header-anchor">#</a></h2><p>首先在购买的域名解析平台添加自己的CNAME记录<br><img src="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020043.png" alt="20200420020043.png"><br>打开你的github博客项目，点击settings，拉到下面Custom domain处，填上你自己的域名<br><img src="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020348.png" alt="20200420020348.png"><br>域名HTTPS的配置可以参考下别人的文章<br><a href="https://tzhou2018.github.io/2018/04/%E4%B8%BAGitHub-Pages%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%B9%B6%E6%B7%BB%E5%8A%A0SSL-%E5%BC%80%E5%90%AFHTTPS%E5%BC%BA%E5%88%B6/" target="_blank" rel="noopener">ssl配置</a></p>
 
       
     </div>
