@@ -7,18 +7,21 @@
   
   <title>搭建github博客 | Michael-叶落</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装nodejs 安装Hexo 连接github到本地 修改hexo的配置文件 写文章、发布文章 修改标题 博客域名配置      一直想把所有博客迁移到github上，今天正式开始，不定时更新 安装nodejs#windows上安装nodejs 安装Hexo#123456npm i hexo-cli -g # 安装Hexohexo -v #验证是否成功hexo init #切换到对应的">
+  <meta name="description" content="安装nodejs 安装Hexo 连接github(前提你已经创建了github pages) 修改hexo的配置文件 写文章、发布文章 修改标题 博客域名配置 配置静态资源文件夹      一直想把所有博客迁移到github上，今天正式开始，不定时更新~~ 安装nodejs#windows上安装nodejs 安装Hexo#123456npm i hexo-cli -g # 安装Hexoh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建github博客">
 <meta property="og:url" content="https://michaelzhang02010479.github.io/2020/04/17/%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Michael-叶落">
-<meta property="og:description" content="安装nodejs 安装Hexo 连接github到本地 修改hexo的配置文件 写文章、发布文章 修改标题 博客域名配置      一直想把所有博客迁移到github上，今天正式开始，不定时更新 安装nodejs#windows上安装nodejs 安装Hexo#123456npm i hexo-cli -g # 安装Hexohexo -v #验证是否成功hexo init #切换到对应的">
+<meta property="og:description" content="安装nodejs 安装Hexo 连接github(前提你已经创建了github pages) 修改hexo的配置文件 写文章、发布文章 修改标题 博客域名配置 配置静态资源文件夹      一直想把所有博客迁移到github上，今天正式开始，不定时更新~~ 安装nodejs#windows上安装nodejs 安装Hexo#123456npm i hexo-cli -g # 安装Hexoh">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020043.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020348.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200421224154.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200421224843.png">
 <meta property="article:published_time" content="2020-04-16T17:11:55.000Z">
-<meta property="article:modified_time" content="2020-04-19T18:05:07.269Z">
+<meta property="article:modified_time" content="2020-04-23T16:53:05.417Z">
 <meta property="article:author" content="Michaelz">
+<meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020043.png">
   
@@ -102,32 +105,49 @@
 <ul>
 <li><a href="#an-zhuang-nodejs">安装nodejs</a></li>
 <li><a href="#an-zhuang-hexo">安装Hexo</a></li>
-<li><a href="#lian-jie-github-dao-ben-di">连接github到本地</a></li>
+<li><a href="#lian-jie-github-qian-ti-ni-yi-jing-chuang-jian-liao-github-pages">连接github(前提你已经创建了github pages)</a></li>
 <li><a href="#xiu-gai-hexo-de-pei-zhi-wen-jian">修改hexo的配置文件</a></li>
 <li><a href="#xie-wen-zhang-fa-bu-wen-zhang">写文章、发布文章</a></li>
 <li><a href="#xiu-gai-biao-ti">修改标题</a></li>
 <li><a href="#bo-ke-yu-ming-pei-zhi">博客域名配置</a></li>
+<li><a href="#pei-zhi-jing-tai-zi-yuan-wen-jian-jia">配置静态资源文件夹</a></li>
 </ul>
 <!-- tocstop -->
 
 </div>
 
-<p>一直想把所有博客迁移到github上，今天正式开始，不定时更新</p>
+<p>一直想把所有博客迁移到github上，今天正式开始，不定时更新~~</p>
 <h2><span id="an-zhuang-nodejs">安装nodejs</span><a href="#an-zhuang-nodejs" class="header-anchor">#</a></h2><p>windows上安装nodejs</p>
 <h2><span id="an-zhuang-hexo">安装Hexo</span><a href="#an-zhuang-hexo" class="header-anchor">#</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-cli -g <span class="comment"># 安装Hexo</span></span><br><span class="line">hexo -v <span class="comment">#验证是否成功</span></span><br><span class="line">hexo init <span class="comment">#切换到对应的目录，然后初始化文件夹</span></span><br><span class="line">npm install <span class="comment">#安装必要组件</span></span><br><span class="line">hexo g <span class="comment">#生产静态网页</span></span><br><span class="line">hexo s <span class="comment">#打开本地服务器，然后浏览器打开localhost:4000预览博客</span></span><br></pre></td></tr></table></figure>
 
-<h2><span id="lian-jie-github-dao-ben-di">连接github到本地</span><a href="#lian-jie-github-dao-ben-di" class="header-anchor">#</a></h2><p>首先登录自己的github，创建GitHub Pages</p>
+<h2><span id="lian-jie-github-qian-ti-ni-yi-jing-chuang-jian-liao-github-pages">连接github(前提你已经创建了github pages)</span><a href="#lian-jie-github-qian-ti-ni-yi-jing-chuang-jian-liao-github-pages" class="header-anchor">#</a></h2><p>首先登录自己的github，创建GitHub Pages</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"xxx"</span> <span class="comment">#配置github账户</span></span><br><span class="line">git config --global user.email <span class="string">"xxx"</span></span><br><span class="line"><span class="comment">#复制公钥到github</span></span><br></pre></td></tr></table></figure>
 
 <h2><span id="xiu-gai-hexo-de-pei-zhi-wen-jian">修改hexo的配置文件</span><a href="#xiu-gai-hexo-de-pei-zhi-wen-jian" class="header-anchor">#</a></h2><p>修改hexo目录下的配置文件：_config.yml</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/xxx/xxx.github.io</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 
 <h2><span id="xie-wen-zhang-fa-bu-wen-zhang">写文章、发布文章</span><a href="#xie-wen-zhang-fa-bu-wen-zhang" class="header-anchor">#</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git <span class="comment">#安装扩展</span></span><br><span class="line">hexo new post <span class="string">"name of you title"</span> <span class="comment">#新建文章并编辑，文件位于\source\_posts</span></span><br><span class="line">hexo g <span class="comment">#生产静态网页</span></span><br><span class="line">hexo s <span class="comment">#打开本地服务器并预览静态网页</span></span><br><span class="line">hexo d <span class="comment">#上传到github</span></span><br></pre></td></tr></table></figure>
-
-<h2><span id="xiu-gai-biao-ti">修改标题</span><a href="#xiu-gai-biao-ti" class="header-anchor">#</a></h2><p>_config.yml是hexo的全局配置</p>
+<p>至此简单的博客发布已经OK<del>~</del> 挺easy!!</p>
+<h2><span id="xiu-gai-biao-ti">修改标题</span><a href="#xiu-gai-biao-ti" class="header-anchor">#</a></h2><p>修改_config.yml是hexo的全局配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Hexo Configuration</span><br><span class="line">## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;configuration.html</span><br><span class="line">## Source: https:&#x2F;&#x2F;github.com&#x2F;hexojs&#x2F;hexo&#x2F;</span><br><span class="line"></span><br><span class="line"># Site</span><br><span class="line">title: 博客的标题</span><br><span class="line">subtitle: 博客的字标题</span><br><span class="line">description: 文字描述</span><br><span class="line">author: </span><br><span class="line">language: </span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
 
-<h2><span id="bo-ke-yu-ming-pei-zhi">博客域名配置</span><a href="#bo-ke-yu-ming-pei-zhi" class="header-anchor">#</a></h2><p>首先在购买的域名解析平台添加自己的CNAME记录<br><img src="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020043.png" alt="20200420020043.png"><br>打开你的github博客项目，点击settings，拉到下面Custom domain处，填上你自己的域名<br><img src="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020348.png" alt="20200420020348.png"><br>域名HTTPS的配置可以参考下别人的文章<br><a href="https://tzhou2018.github.io/2018/04/%E4%B8%BAGitHub-Pages%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%B9%B6%E6%B7%BB%E5%8A%A0SSL-%E5%BC%80%E5%90%AFHTTPS%E5%BC%BA%E5%88%B6/" target="_blank" rel="noopener">ssl配置</a></p>
+<h2><span id="bo-ke-yu-ming-pei-zhi">博客域名配置</span><a href="#bo-ke-yu-ming-pei-zhi" class="header-anchor">#</a></h2><p>首先在购买的域名解析平台(我用的是阿里云云解析)添加自己的CNAME记录<br><img src="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020043.png" alt="20200420020043.png"><br>打开你的github博客项目，点击settings，拉到下面Custom domain处，填上你自己的域名<br><img src="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200420020348.png" alt="20200420020348.png"><br>域名HTTPS的配置可以参考下别人的文章:<br><a href="https://tzhou2018.github.io/2018/04/%E4%B8%BAGitHub-Pages%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%B9%B6%E6%B7%BB%E5%8A%A0SSL-%E5%BC%80%E5%90%AFHTTPS%E5%BC%BA%E5%88%B6/" target="_blank" rel="noopener">ssl配置</a></p>
+<h2><span id="pei-zhi-jing-tai-zi-yuan-wen-jian-jia">配置静态资源文件夹</span><a href="#pei-zhi-jing-tai-zi-yuan-wen-jian-jia" class="header-anchor">#</a></h2><ul>
+<li><p>修改hexo的配置文件_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个新的测试文章</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post &quot;test static files&quot;</span><br></pre></td></tr></table></figure>
+<p>可以看到一个跟文章同名的目录，可以将图片等文件放置在这里~~<br><img src="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200421224154.png" alt="20200421224154.png"></p>
+</li>
+<li><p>可以使用以下这些标签引用自己的资源</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用图片<br>把图片test.png放到目录下，新的博客中使用下面的方式引用图片</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img test.png this is an example %</span><br></pre></td></tr></table></figure>
+<p>查看效果:<br><img src="https://raw.githubusercontent.com/michaelzhang02010479/saveimage/master/img/20200421224843.png" alt="20200421224843.png"></p>
+</li>
+</ul>
 
       
     </div>
@@ -135,6 +155,8 @@
       <a data-url="https://michaelzhang02010479.github.io/2020/04/17/%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2/" data-id="ck931r6190001sopthqnsa0we" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li></ul>
+
     </footer>
   </div>
   
@@ -151,11 +173,6 @@
     </a>
   
   
-    <a href="/2020/04/17/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
 </nav>
 
   
@@ -169,9 +186,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevOps/" rel="tag">DevOps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPT/" rel="tag">PPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AWS/" style="font-size: 10px;">AWS</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Kubernetes/" style="font-size: 10px;">Kubernetes</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/github/" style="font-size: 10px;">github</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -190,6 +221,14 @@
       <ul>
         
           <li>
+            <a href="/2020/04/24/%E6%8C%81%E7%BB%AD%E8%BF%90%E7%BB%B4/">持续运维与监控</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/24/Route53/">Route53私有托管域——轻松管理你私有ip和域名</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/20/%E7%9B%B4%E7%94%B7%E7%9A%84PPT/">直男的PPT</a>
           </li>
         
@@ -199,14 +238,6 @@
         
           <li>
             <a href="/2020/04/19/%E4%BA%91%E6%9C%8D%E5%8A%A1%E7%BD%91%E7%BB%9C%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/">云服务网络规划设计</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/17/%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2/">搭建github博客</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/17/hello-world/">Hello World</a>
           </li>
         
       </ul>

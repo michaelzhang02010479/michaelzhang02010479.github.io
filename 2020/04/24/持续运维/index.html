@@ -5,18 +5,19 @@
   
 
   
-  <title>云服务网络规划设计 | Michael-叶落</title>
+  <title>持续运维与监控 | Michael-叶落</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="TODO">
+  <meta name="description" content="最近要搞一门关于devops的课，所以特意整理了云上持续运维与监控的内容，只能等有空再整理了。   运维的趋势，挑战，事件管理，流程管理  运维权限管理  开源运维平台 云上IAM   监控  开源监控方案  zabbix+短信、邮件、微信、钉钉告警 普罗米修斯(容器) Nagios open-falcon zenoss   监控对象  服务器、虚拟机监控 数据库监控 中间件监控 容器监控">
 <meta property="og:type" content="article">
-<meta property="og:title" content="云服务网络规划设计">
-<meta property="og:url" content="https://michaelzhang02010479.github.io/2020/04/19/%E4%BA%91%E6%9C%8D%E5%8A%A1%E7%BD%91%E7%BB%9C%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:title" content="持续运维与监控">
+<meta property="og:url" content="https://michaelzhang02010479.github.io/2020/04/24/%E6%8C%81%E7%BB%AD%E8%BF%90%E7%BB%B4/index.html">
 <meta property="og:site_name" content="Michael-叶落">
-<meta property="og:description" content="TODO">
+<meta property="og:description" content="最近要搞一门关于devops的课，所以特意整理了云上持续运维与监控的内容，只能等有空再整理了。   运维的趋势，挑战，事件管理，流程管理  运维权限管理  开源运维平台 云上IAM   监控  开源监控方案  zabbix+短信、邮件、微信、钉钉告警 普罗米修斯(容器) Nagios open-falcon zenoss   监控对象  服务器、虚拟机监控 数据库监控 中间件监控 容器监控">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-19T15:23:10.000Z">
-<meta property="article:modified_time" content="2020-04-20T15:05:26.959Z">
+<meta property="article:published_time" content="2020-04-23T16:54:23.000Z">
+<meta property="article:modified_time" content="2020-04-23T17:03:35.211Z">
 <meta property="article:author" content="Michaelz">
+<meta property="article:tag" content="DevOps">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Michael-叶落" type="application/atom+xml">
@@ -70,10 +71,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-云服务网络规划设计" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-持续运维" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/19/%E4%BA%91%E6%9C%8D%E5%8A%A1%E7%BD%91%E7%BB%9C%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/" class="article-date">
-  <time datetime="2020-04-19T15:23:10.000Z" itemprop="datePublished">2020-04-19</time>
+    <a href="/2020/04/24/%E6%8C%81%E7%BB%AD%E8%BF%90%E7%BB%B4/" class="article-date">
+  <time datetime="2020-04-23T16:54:23.000Z" itemprop="datePublished">2020-04-24</time>
 </a>
     
   </div>
@@ -84,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      云服务网络规划设计
+      持续运维与监控
     </h1>
   
 
@@ -92,33 +93,154 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>TODO</p>
+        <blockquote>
+<p>最近要搞一门关于devops的课，所以特意整理了云上持续运维与监控的内容，只能等有空再整理了。</p>
+</blockquote>
+<ul>
+<li><p>运维的趋势，挑战，事件管理，流程管理</p>
+</li>
+<li><p>运维权限管理</p>
+<ul>
+<li>开源运维平台</li>
+<li>云上IAM</li>
+</ul>
+</li>
+<li><p>监控</p>
+<ul>
+<li><p>开源监控方案</p>
+<ul>
+<li>zabbix+短信、邮件、微信、钉钉告警</li>
+<li>普罗米修斯(容器)</li>
+<li>Nagios</li>
+<li>open-falcon</li>
+<li>zenoss</li>
+</ul>
+</li>
+<li><p>监控对象</p>
+<ul>
+<li>服务器、虚拟机监控</li>
+<li>数据库监控</li>
+<li>中间件监控</li>
+<li>容器监控</li>
+</ul>
+</li>
+<li><p>云上监控</p>
+<ul>
+<li>云上自带服务，例如AWS的cloudwatch+SNS、阿里云的云监控+短信服务等</li>
+</ul>
+</li>
+<li><p>告警消息分级，人性化监控系统</p>
+</li>
+</ul>
+</li>
+<li><p>运维可视化</p>
+<ul>
+<li><p>开源技术</p>
+<ul>
+<li>grafana</li>
+</ul>
+</li>
+<li><p>云上服务</p>
+</li>
+</ul>
+</li>
+<li><p>配置管理中心</p>
+<ul>
+<li>开源技术<ul>
+<li>zookeeper</li>
+<li>apollo</li>
+<li>sprint cloud config</li>
+<li>disconf</li>
+<li><a href="https://nacos.io/en-us/" target="_blank" rel="noopener">nacos</a></li>
+<li>confd<ul>
+<li>云上服务</li>
+<li><a href="https://help.aliyun.com/document_detail/59953.html?spm=5176.163362.847321.doc.74852539lqI1OB&aly_as=WeKb8sUX" target="_blank" rel="noopener">阿里云ACM</a></li>
+<li>华为云servicestage分布式配置中心</li>
+<li>AWS config</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="https://cloud.tencent.com/developer/article/1431424" target="_blank" rel="noopener">调用链分析</a></p>
+<ul>
+<li>开源技术<ul>
+<li>zipkin</li>
+<li>Pinpoint</li>
+<li>skywalking</li>
+<li>CAT</li>
+</ul>
+</li>
+<li>云服务<ul>
+<li>阿里云链路追踪</li>
+<li>AWS X-Ray</li>
+<li>华为云APM</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>日志分析与管理</p>
+<ul>
+<li>开源技术<ul>
+<li>ELK</li>
+</ul>
+</li>
+<li>云服务<ul>
+<li><a href="https://aws.amazon.com/cn/getting-started/projects/build-log-analytics-solution/" target="_blank" rel="noopener">AWS EKK(Amazon Elasticsearch Service, Amazon Kinesis, and Kibana)</a></li>
+<li><a href="https://cn.aliyun.com/product/sls" target="_blank" rel="noopener">阿里云日志服务SLS</a></li>
+<li>华为云LTS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>运维审计</p>
+<ul>
+<li>开源技术<ul>
+<li>CMDB</li>
+<li>堡垒机(jumpserver)</li>
+<li>数据库审计</li>
+</ul>
+</li>
+<li>云服务<ul>
+<li><a href="https://help.aliyun.com/document_detail/52922.html?spm=a2c4g.11186623.6.542.2eb542414BlwIZ" target="_blank" rel="noopener">阿里云堡垒机</a></li>
+<li><a href="https://aws.amazon.com/cn/blogs/china/session-manager-register-ec2/" target="_blank" rel="noopener">AWS Session manager</a></li>
+<li>华为云堡垒机</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>微服务管理</p>
+<ul>
+<li>Fabric8</li>
+<li>阿里云微服务引擎 ( MSE ) </li>
+<li>华为云应用管理与运维平台 ServiceStage</li>
+</ul>
+</li>
+<li><p>智能化运维</p>
+</li>
+<li><p>…</p>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://michaelzhang02010479.github.io/2020/04/19/%E4%BA%91%E6%9C%8D%E5%8A%A1%E7%BD%91%E7%BB%9C%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/" data-id="ck977fwf3000060pt6dt4bury" class="article-share-link">Share</a>
+      <a data-url="https://michaelzhang02010479.github.io/2020/04/24/%E6%8C%81%E7%BB%AD%E8%BF%90%E7%BB%B4/" data-id="ck9d0hdbl0000dkpt72571dxw" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DevOps/" rel="tag">DevOps</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2020/04/20/%E6%9C%AC%E6%9C%BAvirtualbox%E9%83%A8%E7%BD%B2kubernetes/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          本地笔记本电脑部署kubernetes集群
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/17/%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/24/Route53/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">搭建github博客</div>
+      <div class="article-nav-title">Route53私有托管域——轻松管理你私有ip和域名</div>
     </a>
   
 </nav>
