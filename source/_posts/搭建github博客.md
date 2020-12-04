@@ -100,6 +100,15 @@ hexo new post "test static files"
 查看效果:
 ![20200421224843.png](https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200421224843.png)
 
+## 修改首页文章显示数量
 
+> 每次首页显示太多，加载会非常慢，可以通过修改hexo的全局配置设置每页显示的数量
 
+修改hexo主目录配置文件./_config.yml,修改index_gererator的per_page参数
 
+```
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+~~```~~
