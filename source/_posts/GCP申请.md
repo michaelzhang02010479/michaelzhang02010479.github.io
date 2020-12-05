@@ -15,6 +15,8 @@ tags: GCP
 ![20200424011350.png](https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200424011350.png)
 ![20200424011518.png](https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200424011518.png)
 
+<!-- more -->
+
 - 填写信用卡信息
 填写信用卡卡号，需要注意，不支持银联，需要提前准备好一张多币卡。填写OK后会有一笔扣款交易失败，所以不用担心乱扣费。
 ![20200424011633.png](https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200424011633.png)

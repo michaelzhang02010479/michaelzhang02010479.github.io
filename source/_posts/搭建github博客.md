@@ -111,4 +111,11 @@ index_generator:
   path: ''
   per_page: 10
   order_by: -date
-~~```~~
+```
+
+
+
+
+- 首页不要展开全文
+
+在非首行处添加 <!-- more -->

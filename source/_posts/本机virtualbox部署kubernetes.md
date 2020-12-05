@@ -7,12 +7,15 @@ tags: Kubernetes
 
 > 通过在本机笔记本电脑上的virtualbox上使用kubeadm部署kubernetes集群，用于练习。
 
+
 ## 环境说明
 操作系统：centos7.6
 内核版本：3.10.0-957.el7.x86\_64 (可自行升级内核) <br>
 ![系统结构](https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200220165903.png)
 Kubernetes版本：v1.17
 ---
+
+<! -- more -->
 
 ## 虚拟机创建
 - 虚拟机centos7-kub01（k8s-master）网卡配置:
