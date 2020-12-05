@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="作为一名运维，平常的运维工作总是有很多虚机需要管理，一大堆私有IP、ELB域名、ALB域名、RDS域名、及其他endpoint总是搞得人心烦意乱.  杂乱的IP地址和域名# 无序的IP和杂乱的域名总是让人头大，这时候就想如果像通用域名那样直接通过自定义的域名就是找到我的虚机就完美了。比如通过www.baidu.com可以直接打开百度的网页，而不是通过http:&#x2F;&#x2F;183.232.231.174&#x2F;">
+<meta name="description" content="作为一名运维，平常的运维工作总是有很多虚机需要管理，一大堆私有IP、ELB域名、ALB域名、RDS域名、及其他endpoint总是搞得人心烦意乱.  杂乱的IP地址和域名   无序的IP和杂乱的域名总是让人头大，这时候就想如果像通用域名那样直接通过自定义的域名就是找到我的虚机就完美了。比如通过www.baidu.com可以直接打开百度的网页，而不是通过http:&#x2F;&#x2F;183.232.231.174&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Route53私有托管域——轻松管理你私有ip和域名">
 <meta property="og:url" content="http://blog.xishiguli.top/2020/04/24/Route53/index.html">
 <meta property="og:site_name" content="Michael-叶落">
-<meta property="og:description" content="作为一名运维，平常的运维工作总是有很多虚机需要管理，一大堆私有IP、ELB域名、ALB域名、RDS域名、及其他endpoint总是搞得人心烦意乱.  杂乱的IP地址和域名# 无序的IP和杂乱的域名总是让人头大，这时候就想如果像通用域名那样直接通过自定义的域名就是找到我的虚机就完美了。比如通过www.baidu.com可以直接打开百度的网页，而不是通过http:&#x2F;&#x2F;183.232.231.174&#x2F;">
+<meta property="og:description" content="作为一名运维，平常的运维工作总是有很多虚机需要管理，一大堆私有IP、ELB域名、ALB域名、RDS域名、及其他endpoint总是搞得人心烦意乱.  杂乱的IP地址和域名   无序的IP和杂乱的域名总是让人头大，这时候就想如果像通用域名那样直接通过自定义的域名就是找到我的虚机就完美了。比如通过www.baidu.com可以直接打开百度的网页，而不是通过http:&#x2F;&#x2F;183.232.231.174&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200424003112.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200424003356.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200424003636.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200424004500.png">
 <meta property="article:published_time" content="2020-04-23T16:28:44.000Z">
-<meta property="article:modified_time" content="2020-05-08T16:12:09.986Z">
+<meta property="article:modified_time" content="2020-12-05T18:02:30.910Z">
 <meta property="article:author" content="Michaelz">
 <meta property="article:tag" content="AWS">
 <meta name="twitter:card" content="summary">
@@ -352,6 +352,7 @@
 <p>无序的IP和杂乱的域名总是让人头大，这时候就想如果像通用域名那样直接通过自定义的域名就是找到我的虚机就完美了。比如通过<a href="http://www.baidu.com可以直接打开百度的网页，而不是通过http://183.232.231.174/记忆这样ip地址去打开网页。" target="_blank" rel="noopener">www.baidu.com可以直接打开百度的网页，而不是通过http://183.232.231.174/记忆这样ip地址去打开网页。</a></p>
 <p><img src="https://cdn.jsdelivr.net/gh/michaelzhang02010479/saveimage@master/img/20200424003356.png" alt="20200424003356.png"></p>
 <p>这个时候就可以用aws route53自带的私有托管区域来完美解决这个问题。首先看下官方文档中关于route53私有托管区域的说明：</p>
+<p>&lt;! – more –&gt;</p>
 <blockquote>
 <p>私有托管区域私有托管区域 就是一个容器，其中包含的信息说明您希望 Amazon Route 53 如何响应您使用 Amazon VPC 服务创建的一个或多个 VPC 中的某个域及其子域的 DNS 查询。<br>下面是私有托管区域的工作原理：您创建一个私有托管区域（如 example.com），并指定要与该托管区域关联的 VPC。您在托管区域中创建记录，用于确定 Route 53 如何响应您的 VPC 中的域及子域的 DNS 查询。例如，假设您有一个在与私有托管区域关联的 VPC 之一中的 EC2 实例上运行的数据库服务器。您创建 A 或 AAAA 记录（如 db.example.com），并指定数据库服务器的 IP 地址。有关 记录的更多信息，请参阅 使用记录。有关使用私有托管区域的 Amazon VPC 要求的信息，请参阅 Amazon VPC 用户指南 中的使用私有托管区域。当应用程序提交 db.example.com 的 DNS 查询时，Route 53 会返回相应的 IP 地址。应用程序还必须运行在与 example.com 私有托管区域关联的 VPC 之一中的 EC2 实例上。应用程序使用从 Route 53 获得的 IP 地址与数据库服务器建立连接。</p>
 </blockquote>
