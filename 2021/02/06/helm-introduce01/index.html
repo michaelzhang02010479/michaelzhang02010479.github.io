@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.zhangyefeng.cn","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Helm介绍 Helm概念 Helm 是 Deis 开发的一个用于 Kubernetes 应用的包管理工具，主要用来管理 Charts。有点类似于 Ubuntu 中的 APT 或 CentOS 中的 YUM。Helm Chart 是用来封装 Kubernetes 原生应用程序的一系列 YAML 文件。可以在你部署应用的时候自定义应用程序的一些 Metadata，以便于应用程序的分发。对于应用发布者">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Helm介绍01-初识Helm">
+<meta property="og:url" content="http://www.zhangyefeng.cn/2021/02/06/helm-introduce01/index.html">
+<meta property="og:site_name" content="叶落">
+<meta property="og:description" content="Helm介绍 Helm概念 Helm 是 Deis 开发的一个用于 Kubernetes 应用的包管理工具，主要用来管理 Charts。有点类似于 Ubuntu 中的 APT 或 CentOS 中的 YUM。Helm Chart 是用来封装 Kubernetes 原生应用程序的一系列 YAML 文件。可以在你部署应用的时候自定义应用程序的一些 Metadata，以便于应用程序的分发。对于应用发布者">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.zhangyefeng.cn/2021/02/06/helm-introduce01/2.png">
+<meta property="og:image" content="http://www.zhangyefeng.cn/2021/02/06/helm-introduce01/3.png">
+<meta property="og:image" content="http://www.zhangyefeng.cn/2021/02/06/helm-introduce01/5.png">
+<meta property="article:published_time" content="2021-02-06T11:59:51.000Z">
+<meta property="article:modified_time" content="2021-02-06T14:05:53.467Z">
+<meta property="article:author" content="Michaelz">
+<meta property="article:tag" content="helm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.zhangyefeng.cn/2021/02/06/helm-introduce01/2.png">
+
+<link rel="canonical" href="http://www.zhangyefeng.cn/2021/02/06/helm-introduce01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Helm介绍01-初识Helm | 叶落</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">叶落</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">往事如风，常伴吾身。挥洒不去，思之如梦。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangyefeng.cn/2021/02/06/helm-introduce01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Michaelz">
+      <meta itemprop="description" content="my blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Helm介绍01-初识Helm
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-06 19:59:51 / Modified: 22:05:53" itemprop="dateCreated datePublished" datetime="2021-02-06T19:59:51+08:00">2021-02-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2><span id="helm-jie-shao">Helm介绍</span><a href="#helm-jie-shao" class="header-anchor">#</a></h2><h3><span id="helm-gai-nian">Helm概念</span><a href="#helm-gai-nian" class="header-anchor">#</a></h3><blockquote>
+<p>Helm 是 Deis 开发的一个用于 Kubernetes 应用的包管理工具，主要用来管理 Charts。有点类似于 Ubuntu 中的 APT 或 CentOS 中的 YUM。Helm Chart 是用来封装 Kubernetes 原生应用程序的一系列 YAML 文件。可以在你部署应用的时候自定义应用程序的一些 Metadata，以便于应用程序的分发。对于应用发布者而言，可以通过 Helm 打包应用、管理应用依赖关系、管理应用版本并发布应用到软件仓库。对于使用者而言，使用 Helm 后不用需要编写复杂的应用部署文件，可以以简单的方式在 Kubernetes 上查找、安装、升级、回滚、卸载应用程序。</p>
+</blockquote>
+<h3><span id="helm-jia-gou">Helm架构</span><a href="#helm-jia-gou" class="header-anchor">#</a></h3>
+
+<p>Helm由两部分组成：<strong>Helm Client</strong> 和 <strong>Tiller Server</strong>，Client负责管理 chart，而Server端负责管理 release。</p>
+<ul>
+<li><p>Helm Client 是最终用户的命令行客户端。客户端负责以下部分：</p>
+<ul>
+<li>本地 chart 开发</li>
+<li>管理存储库</li>
+<li>与 Tiller 服务交互</li>
+<li>发送要安装的 chart</li>
+<li>查询有关发布的信息</li>
+<li>请求升级或卸载现有 release</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Chart：一个 Helm 包，其中包含了运行一个应用所需要的工具、资源定义等，还可能包含 Kubernetes 集群中的服务定义，类似 APT 的 dpkg 或者 Yum 的 RPM 文件，</p>
+</blockquote>
+<ul>
+<li><p>Tiller Server 是一个集群内服务，与 Helm 客户端进行交互，并与 Kubernetes API 服务进行交互。服务负责以下内容：</p>
+<ul>
+<li>监听来自 Helm 客户端的传入请求</li>
+<li>结合 chart 和配置来构建发布</li>
+<li>将 chart 安装到 Kubernetes 中，然后跟踪后续 release</li>
+<li>通过与 Kubernetes 交互来升级和卸载 chart</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Release: 在 Kubernetes 集群上运行的 Chart 的一个实例。在同一个集群上，一个 Chart 可以安装很多次。每次安装都会创建一个新的 release。</p>
+</blockquote>
+<p><em>Helm 整个系统的主要任务就是，在仓库中查找需要的 Chart，然后把 Chart 以 Release 的形式安装到 Kubernetes 之中</em></p>
+<p>Helm 客户端使用 Go 编程语言编写，并使用 gRPC 协议套件与 Tiller 服务进行交互。</p>
+<p>Tiller 服务也用 Go 编写。它提供了一个与客户端连接的 gRPC 服务，它使用 Kubernetes 客户端库与 Kubernetes 进行通信。目前，该库使用 REST + JSON。</p>
+<p>Tiller 服务将信息存储在位于 Kubernetes 内的 ConfigMaps 中。它不需要自己的数据库。</p>
+<h2><span id="helm-an-zhuang">Helm安装</span><a href="#helm-an-zhuang" class="header-anchor">#</a></h2><h3><span id="er-jin-zhi-ban-ben-an-zhuang">二进制版本安装</span><a href="#er-jin-zhi-ban-ben-an-zhuang" class="header-anchor">#</a></h3><ul>
+<li>下载对应<a href="https://github.com/helm/helm/releases" target="_blank" rel="noopener">需要的版本</a></li>
+<li>解压对应的tar包</li>
+<li>在解压目中找到helm程序，移动到需要的目录中</li>
+</ul>
+<h3><span id="jiao-ben-an-zhuang">脚本安装</span><a href="#jiao-ben-an-zhuang" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3</span><br><span class="line">chmod 700 get_helm.sh</span><br><span class="line">./get_helm.sh</span><br></pre></td></tr></table></figure>
+
+<h3><span id="tong-guo-bao-guan-li-qi-an-zhuang">通过包管理器安装</span><a href="#tong-guo-bao-guan-li-qi-an-zhuang" class="header-anchor">#</a></h3><ul>
+<li>macos安装</li>
+</ul>
+<p>brew install helm</p>
+<ul>
+<li>Debian/Ubuntu</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl https:&#x2F;&#x2F;baltocdn.com&#x2F;helm&#x2F;signing.asc | sudo apt-key add -</span><br><span class="line">sudo apt-get install apt-transport-https --yes</span><br><span class="line">echo &quot;deb https:&#x2F;&#x2F;baltocdn.com&#x2F;helm&#x2F;stable&#x2F;debian&#x2F; all main&quot; | sudo tee &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;helm-stable-debian.list</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install helm</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://helm.sh/zh/docs/intro/install/" target="_blank" rel="noopener">其他安装方式</a></li>
+</ul>
+<h2><span id="helm-shi-yong">Helm使用</span><a href="#helm-shi-yong" class="header-anchor">#</a></h2><p>使用Helm的先决条件：</p>
+<ul>
+<li>使用Helm，需要一个Kubernetes集群(最简单的是自己装一个minikube，或者自己通过虚拟机搭建一个单节点的kubernetes,可以使用<a href="https://github.com/caoyingjunz/kubez-ansible" target="_blank" rel="noopener">kubez-ansible</a>快速搭建)，也应该有一个本地的 kubectl</li>
+<li>安装和配置Helm</li>
+</ul>
+<h3><span id="helm-chu-shi-hua">Helm初始化</span><a href="#helm-chu-shi-hua" class="header-anchor">#</a></h3><p>安装Helm后，可以添加一个chart仓库,一个常见的选择是添加Helm的官方仓库:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">helm repo add stable https:&#x2F;&#x2F;charts.helm.sh&#x2F;stable</span><br></pre></td></tr></table></figure>
+
+<p>可以看到可以被您安装的charts列表：</p>
+<img src="/2021/02/06/helm-introduce01/2.png" class title="查看安装的chart">
+
+<h3><span id="shi-yong-helm-an-zhuang-yi-ge-release">使用Helm安装一个release</span><a href="#shi-yong-helm-an-zhuang-yi-ge-release" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 在chart仓库中搜索mysql</span></span><br><span class="line">helm search repo mysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用helm安装mysql</span></span><br><span class="line">helm install stable/mysql --generate-name</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/02/06/helm-introduce01/3.png" class title="使用helm安装mysql">
+
+<p>通过helm ls可以查看已经创建的release</p>
+<img src="/2021/02/06/helm-introduce01/5.png" class title="使用helm安装mysql">
+
+<blockquote>
+<p>所以，通过Helm就可以快速部署一个自己所需要的组件应用，节省大部分时间。可以为自己的应用编写chart，并快速发布。</p>
+</blockquote>
+<h2><span id="can-kao-zi-liao">参考资料</span><a href="#can-kao-zi-liao" class="header-anchor">#</a></h2><p><a href="https://helm.sh/zh/docs/intro/quickstart/" target="_blank" rel="noopener">快速入门指南</a><br><a href="https://helm.sh/zh/docs/intro/using_helm/" target="_blank" rel="noopener">使用Helm</a><br><a href="https://whmzsu.github.io/helm-doc-zh-cn/architecture-zh_cn.html" target="_blank" rel="noopener">Kubernetes Helm 架构</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/helm/" rel="tag"># helm</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/31/knowledge-manage03/" rel="prev" title="知识管理03">
+      <i class="fa fa-chevron-left"></i> 知识管理03
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">Helm介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">Helm概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.2.</span> <span class="nav-text">Helm架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">Helm安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text">二进制版本安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.2.</span> <span class="nav-text">脚本安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.3.</span> <span class="nav-text">通过包管理器安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">Helm使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">3.1.</span> <span class="nav-text">Helm初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">3.2.</span> <span class="nav-text">使用Helm安装一个release</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Michaelz</p>
+  <div class="site-description" itemprop="description">my blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Michaelz</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
