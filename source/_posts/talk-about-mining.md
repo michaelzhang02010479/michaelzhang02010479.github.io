@@ -8,4 +8,5 @@ tags:
     - BTC
     - 挖矿
     - 币安
+hidden: true
 ---
