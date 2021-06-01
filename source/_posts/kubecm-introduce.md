@@ -1,7 +1,7 @@
 ---
 title: 使用kubecm管理多个Kubernetes集群
 date: 2021-03-16 19:23:07
-tags:
+tags: kubecm
 ---
 
 
